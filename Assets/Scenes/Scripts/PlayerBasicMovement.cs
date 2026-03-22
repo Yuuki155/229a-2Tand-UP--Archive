@@ -2,9 +2,18 @@ using UnityEngine;
 
 public class PlayerBasicMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = 6f;
     public float rotateSpeed = 120f;
     public float jumpForce = 12f;
+    public float maxSprintSpeed = 8f;
+    public float acceleration = 3f;
+
+    public float maxStamina = 5f;
+    public float staminaDrain = 1f;
+    public float staminaRegen = 0.8f;
+
+    float currentSpeed;
+    float currentStamina;
 
     Rigidbody rb;
     bool isGrounded;
@@ -12,6 +21,8 @@ public class PlayerBasicMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        currentSpeed = moveSpeed;
+        currentStamina = maxStamina;
     }
 
     void Update()
@@ -28,8 +39,18 @@ public class PlayerBasicMovement : MonoBehaviour
     void Move()
     {
         float v = Input.GetAxis("Vertical");
-        Vector3 forwardMove = transform.forward * v * moveSpeed;
+        bool isSprinting = Input.GetKey(KeyCode.LeftShift) && currentStamina > 0f && v > 0;
+
+        // Target speed
+        float targetSpeed = isSprinting ? maxSprintSpeed : moveSpeed;
+
+        // Smooth acceleration toward target speed
+        currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, acceleration * Time.deltaTime);
+
+        Vector3 forwardMove = transform.forward * v * currentSpeed;
         rb.linearVelocity = new Vector3(forwardMove.x, rb.linearVelocity.y, forwardMove.z);
+
+        HandleStamina(isSprinting);
     }
 
     void Rotate()
@@ -54,5 +75,18 @@ public class PlayerBasicMovement : MonoBehaviour
     void OnCollisionExit(Collision collision)
     {
         isGrounded = false;
+    }
+    void HandleStamina(bool isSprinting)
+    {
+        if (isSprinting)
+        {
+            currentStamina -= staminaDrain * Time.deltaTime;
+            currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+        }
+        else
+        {
+            currentStamina += staminaRegen * Time.deltaTime;
+            currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+        }
     }
 }

@@ -11,7 +11,7 @@ public class HPBarControl : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        maxHP = player.maxStamina;
+        maxHP = player.maxHP;
         currentHP = maxHP;
         hpBar.value = currentHP / maxHP;
     }
@@ -19,7 +19,7 @@ public class HPBarControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //hpBar.value = currentHP / maxHP;
-        //currentHP = player.currentStamina;
+        hpBar.value = currentHP / maxHP;
+        currentHP = player.currentHP;
     }
 }

@@ -13,7 +13,7 @@ public class PlayerBasicMovement : MonoBehaviour
     public float staminaRegen = 0.8f;
 
     float currentSpeed;
-    float currentStamina;
+    public float currentStamina;
 
     Rigidbody rb;
     bool isGrounded;

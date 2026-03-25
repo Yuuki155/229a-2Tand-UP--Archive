@@ -1,3 +1,4 @@
+using NUnit;
 using UnityEngine;
 
 public class Paper : MonoBehaviour
@@ -18,10 +19,16 @@ public class Paper : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             HPBarControl hp = other.GetComponent<HPBarControl>();
+            PaperCollected inv = other.GetComponent<PaperCollected>();
 
             if (hp != null)
             {
                 hp.AddHP(1f);
+            }
+
+            if (inv != null)
+            {
+                inv.AddPaper(1);
             }
 
             Collect();

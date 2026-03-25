@@ -20,6 +20,7 @@ public class PlayerBasicMovement : MonoBehaviour
 
     Rigidbody rb;
     bool isGrounded;
+    bool sprintLocked;
 
     void Start()
     {
@@ -43,8 +44,7 @@ public class PlayerBasicMovement : MonoBehaviour
     void Move()
     {
         float v = Input.GetAxis("Vertical");
-        bool isSprinting = Input.GetKey(KeyCode.LeftShift) && currentStamina > 0f && v > 0;
-
+        bool isSprinting = Input.GetKey(KeyCode.LeftShift) && currentStamina > 0f && v > 0 && !sprintLocked;
         // Target speed
         float targetSpeed = isSprinting ? maxSprintSpeed : moveSpeed;
 
@@ -85,12 +85,22 @@ public class PlayerBasicMovement : MonoBehaviour
         if (isSprinting)
         {
             currentStamina -= staminaDrain * Time.deltaTime;
-            currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+
+            if (currentStamina <= 0f)
+            {
+                currentStamina = 0f;
+                sprintLocked = true; // Lock sprint
+            }
         }
         else
         {
             currentStamina += staminaRegen * Time.deltaTime;
-            currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+
+            if (currentStamina >= maxStamina)
+            {
+                currentStamina = maxStamina;
+                sprintLocked = false; // Unlock sprint when FULL
+            }
         }
     }
 }

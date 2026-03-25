@@ -17,10 +17,10 @@ public class Monster : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerBasicMovement player = collision.gameObject.GetComponent<PlayerBasicMovement>();
-            if (player != null)
+            HPBarControl hp = collision.gameObject.GetComponent<HPBarControl>();
+            if (hp != null)
             {
-                player.currentHP -= 20f; // Reduce player's HP by 20
+                hp.currentHP -= 1f; // Reduce player's HP by 1
             }
         }
     }

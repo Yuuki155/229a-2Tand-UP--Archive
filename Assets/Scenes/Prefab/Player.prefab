@@ -125,7 +125,9 @@ GameObject:
   - component: {fileID: 102806012622607805}
   - component: {fileID: 6828548405969392978}
   - component: {fileID: 9021848538900033940}
-  - component: {fileID: 217754414466427979}
+  - component: {fileID: 3497450047377982117}
+  - component: {fileID: 266044294313319279}
+  - component: {fileID: 3630078580968487871}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -142,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 6049318584296144810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.14062, y: 2.11, z: -3.57609}
+  m_LocalPosition: {x: 0.21153395, y: 1.0000012, z: -2.193902}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -254,9 +256,9 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &217754414466427979
+--- !u!114 &3497450047377982117
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,12 +270,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8e47134e1f438499a6b4dbbf7361d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBasicMovement
-  moveSpeed: 5
+  moveSpeed: 6
   rotateSpeed: 120
   jumpForce: 12
-  maxSprintSpeed: 10
-  acceleration: 5
+  maxSprintSpeed: 8
+  acceleration: 3
   maxStamina: 5
   staminaDrain: 1
   staminaRegen: 0.8
+  currentStamina: 0
+--- !u!114 &266044294313319279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6049318584296144810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2988e19773668714bafac66fbda73014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HPBarControl
+  hpBar: {fileID: 0}
+  maxHP: 5
+  currentHP: 0
+--- !u!114 &3630078580968487871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6049318584296144810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea2a054e1f6f4c4f91f91a5d2bc3f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StaminaBarControl
+  staminaBar: {fileID: 0}
+  player: {fileID: 3497450047377982117}
+  maxSta: 0
+  minSta: 0
   currentStamina: 0

@@ -8,9 +8,6 @@ public class PlayerBasicMovement : MonoBehaviour
     public float maxSprintSpeed = 8f;
     public float acceleration = 3f;
 
-    public float maxHP = 100f;
-    public float currentHP;
-
     public float maxStamina = 5f;
     public float staminaDrain = 1f;
     public float staminaRegen = 0.8f;
@@ -26,7 +23,6 @@ public class PlayerBasicMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         currentSpeed = moveSpeed;
-        currentHP = maxHP;
         currentStamina = maxStamina;
     }
 

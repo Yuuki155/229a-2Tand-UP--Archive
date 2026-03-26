@@ -2,17 +2,32 @@ using UnityEngine;
 
 public class PlayerBasicMovement : MonoBehaviour
 {
-    public float moveSpeed = 6f;
-    public float rotateSpeed = 120f;
-    public float jumpForce = 12f;
-    public float maxSprintSpeed = 8f;
-    public float acceleration = 3f;
+    public float moveForce = 50f;
+    public float rotateSpeed = 70f;
+    public float jumpForce = 5f;
+    public float maxSprintForce = 100f;
 
-    public float maxStamina = 5f;
-    public float staminaDrain = 1f;
-    public float staminaRegen = 0.8f;
+    // check speed
+    public float currentSpeed;
+    public float topSpeed = 0f;
 
-    float currentSpeed;
+    // speed limit
+    public float walkSpeedCap = 6f;
+    public float sprintSpeedCap = 10f;
+
+    // stamina
+    public float maxStamina = 8f;
+    public float staminaDrain = 0.8f;
+    public float staminaRegen = 0.6f;
+
+    [Header("Air Control")]
+    public float airFloatForce = 10f;
+    public int maxAirSprints = 2;
+
+    int airSprintCount = 0;
+
+    public float maxSpeed = 8f;
+
     public float currentStamina;
 
     Rigidbody rb;
@@ -22,7 +37,6 @@ public class PlayerBasicMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        currentSpeed = moveSpeed;
         currentStamina = maxStamina;
     }
 
@@ -35,20 +49,61 @@ public class PlayerBasicMovement : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+
+        // Get horizontal speed (ignores jumping)
+        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        currentSpeed = flatVel.magnitude;
+
+        // Check for new top speed
+        if (currentSpeed > topSpeed)
+        {
+            topSpeed = currentSpeed;
+            Debug.Log("New Top Speed: " + topSpeed);
+        }
+
+        // Always show current speed (optional spammy)
+        Debug.Log("Current Speed: " + currentSpeed);
     }
 
     void Move()
     {
         float v = Input.GetAxis("Vertical");
-        bool isSprinting = Input.GetKey(KeyCode.LeftShift) && currentStamina > 0f && v > 0 && !sprintLocked;
-        // Target speed
-        float targetSpeed = isSprinting ? maxSprintSpeed : moveSpeed;
 
-        // Smooth acceleration toward target speed
-        currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, acceleration * Time.deltaTime);
+        bool wantsToSprint = Input.GetKey(KeyCode.LeftShift) && v > 0 && !sprintLocked;
 
-        Vector3 forwardMove = transform.forward * v * currentSpeed;
-        rb.linearVelocity = new Vector3(forwardMove.x, rb.linearVelocity.y, forwardMove.z);
+        bool canAirSprint = isGrounded || airSprintCount < maxAirSprints;
+
+        bool isSprinting = wantsToSprint && currentStamina > 0f && canAirSprint;
+
+        float force = isSprinting ? maxSprintForce : moveForce;
+        float speedCap = isSprinting ? sprintSpeedCap : walkSpeedCap;
+
+        // Apply movement force
+        if (v != 0)
+        {
+            rb.AddForce(transform.forward * v * force);
+        }
+
+        // ✨ Air float effect
+        if (!isGrounded && isSprinting)
+        {
+            rb.AddForce(Vector3.up * airFloatForce);
+        }
+
+        // Count air sprint usage
+        if (!isGrounded && isSprinting && wantsToSprint)
+        {
+            airSprintCount++;
+        }
+
+        // Clamp speed
+        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+
+        if (flatVel.magnitude > speedCap)
+        {
+            Vector3 limitedVel = flatVel.normalized * speedCap;
+            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z);
+        }
 
         HandleStamina(isSprinting);
     }
@@ -63,6 +118,7 @@ public class PlayerBasicMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
+            // Newton's 3rd Law (push ground → go up)
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
@@ -70,12 +126,14 @@ public class PlayerBasicMovement : MonoBehaviour
     void OnCollisionStay(Collision collision)
     {
         isGrounded = true;
+        airSprintCount = 0; // reset when touching ground
     }
 
     void OnCollisionExit(Collision collision)
     {
         isGrounded = false;
     }
+
     void HandleStamina(bool isSprinting)
     {
         if (isSprinting)
@@ -85,7 +143,7 @@ public class PlayerBasicMovement : MonoBehaviour
             if (currentStamina <= 0f)
             {
                 currentStamina = 0f;
-                sprintLocked = true; // Lock sprint
+                sprintLocked = true;
             }
         }
         else
@@ -95,7 +153,7 @@ public class PlayerBasicMovement : MonoBehaviour
             if (currentStamina >= maxStamina)
             {
                 currentStamina = maxStamina;
-                sprintLocked = false; // Unlock sprint when FULL
+                sprintLocked = false;
             }
         }
     }

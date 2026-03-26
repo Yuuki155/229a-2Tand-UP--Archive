@@ -194,17 +194,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127128945}
   m_CullTransparentMesh: 1
---- !u!1 &318085554 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6049318584296144810, guid: edfa317762b465f4ab0e1ffc16c46454, type: 3}
-  m_PrefabInstance: {fileID: 948568560}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &318085557 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3497450047377982117, guid: edfa317762b465f4ab0e1ffc16c46454, type: 3}
   m_PrefabInstance: {fileID: 948568560}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318085554}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab8e47134e1f438499a6b4dbbf7361d6, type: 3}
@@ -215,19 +210,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3995625194636535536, guid: edfa317762b465f4ab0e1ffc16c46454, type: 3}
   m_PrefabInstance: {fileID: 948568560}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &318085563
+--- !u!114 &318085563 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 914752675534303066, guid: edfa317762b465f4ab0e1ffc16c46454, type: 3}
+  m_PrefabInstance: {fileID: 948568560}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318085554}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f12c2635199bdf439f19c715b02ab42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaperCollected
-  paperCount: 0
 --- !u!1 &371650836
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +751,14 @@ PrefabInstance:
       propertyPath: hpBar
       value: 
       objectReference: {fileID: 495089615}
+    - target: {fileID: 3497450047377982117, guid: edfa317762b465f4ab0e1ffc16c46454, type: 3}
+      propertyPath: maxSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3497450047377982117, guid: edfa317762b465f4ab0e1ffc16c46454, type: 3}
+      propertyPath: jumpForce
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3630078580968487871, guid: edfa317762b465f4ab0e1ffc16c46454, type: 3}
       propertyPath: staminaBar
       value: 
@@ -809,10 +810,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6049318584296144810, guid: edfa317762b465f4ab0e1ffc16c46454, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 318085563}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edfa317762b465f4ab0e1ffc16c46454, type: 3}
 --- !u!1 &963194225
 GameObject:

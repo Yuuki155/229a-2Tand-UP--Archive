@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 3497450047377982117}
   - component: {fileID: 266044294313319279}
   - component: {fileID: 3630078580968487871}
+  - component: {fileID: 914752675534303066}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -144,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 6049318584296144810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.21153395, y: 1.0000012, z: -2.193902}
+  m_LocalPosition: {x: -2.14062, y: 2.11, z: -3.57609}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -270,14 +271,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8e47134e1f438499a6b4dbbf7361d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBasicMovement
-  moveSpeed: 6
-  rotateSpeed: 120
-  jumpForce: 12
-  maxSprintSpeed: 8
-  acceleration: 3
-  maxStamina: 5
-  staminaDrain: 1
-  staminaRegen: 0.8
+  moveForce: 50
+  rotateSpeed: 70
+  jumpForce: 5
+  maxSprintForce: 100
+  currentSpeed: 0
+  topSpeed: 0
+  walkSpeedCap: 10
+  sprintSpeedCap: 20
+  maxStamina: 8
+  staminaDrain: 0.8
+  staminaRegen: 0.6
+  maxSpeed: 8
   currentStamina: 0
 --- !u!114 &266044294313319279
 MonoBehaviour:
@@ -311,3 +316,16 @@ MonoBehaviour:
   maxSta: 0
   minSta: 0
   currentStamina: 0
+--- !u!114 &914752675534303066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6049318584296144810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f12c2635199bdf439f19c715b02ab42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaperCollected
+  paperCount: 0

@@ -2510,6 +2510,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1804139374}
     - target: {fileID: 2227996364575650204, guid: edfa317762b465f4ab0e1ffc16c46454, type: 3}
+      propertyPath: maxJumps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227996364575650204, guid: edfa317762b465f4ab0e1ffc16c46454, type: 3}
       propertyPath: isGrounded
       value: 0
       objectReference: {fileID: 0}

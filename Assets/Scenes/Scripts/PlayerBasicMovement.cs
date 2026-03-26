@@ -4,8 +4,12 @@ public class PlayerBasicMovement : MonoBehaviour
 {
     public float moveForce = 50f;
     public float rotateSpeed = 70f;
-    public float jumpForce = 5f;
     public float maxSprintForce = 100f;
+
+    [Header("Jump Settings")]
+    public int maxJumps = 2;
+    public float jumpForce = 5f;
+    int jumpCount = 0;
 
     // check speed
     public float currentSpeed;
@@ -122,10 +126,18 @@ public class PlayerBasicMovement : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Newton's 3rd Law (push ground → go up)
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            if (isGrounded || jumpCount < maxJumps)
+            {
+                // Reset Y velocity for consistent jump height
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+
+                // Newton's 3rd Law (push ground → go up)
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+                jumpCount++;
+            }
         }
     }
     public void Dead()
@@ -136,7 +148,8 @@ public class PlayerBasicMovement : MonoBehaviour
     void OnCollisionStay(Collision collision)
     {
         isGrounded = true;
-        airSprintCount = 0; // reset when touching ground
+        airSprintCount = 0;
+        jumpCount = 0; // ✅ reset jumps
     }
 
     void OnCollisionExit(Collision collision)

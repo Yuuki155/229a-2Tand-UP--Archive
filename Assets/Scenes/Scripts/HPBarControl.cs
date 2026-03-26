@@ -5,8 +5,7 @@ using System.Collections;
 public class HPBarControl : MonoBehaviour
 {
     public Slider hpBar;
-    public GameObject text;
-    public GameObject backGround;
+    public GameObject gameOverText;
 
     public float maxHP = 5f;
     public float currentHP;
@@ -36,8 +35,7 @@ public class HPBarControl : MonoBehaviour
         {
             Debug.Log("Player has died!");
             isDead = true;
-            text.SetActive(true);
-            backGround.SetActive(true);
+            gameOverText.SetActive(true);
         }
     }
 

@@ -33,6 +33,8 @@ public class PlayerBasicMovement : MonoBehaviour
     Rigidbody rb;
     public bool isGrounded;
     bool sprintLocked;
+    public bool isDead;
+    public HPBarControl hPBar;
 
     void Start()
     {
@@ -42,14 +44,16 @@ public class PlayerBasicMovement : MonoBehaviour
 
     void Update()
     {
-        Rotate();
-        Jump();
+        
     }
 
     void FixedUpdate()
     {
+        if (isDead) return; // Don't move if dead
         Move();
-
+        Rotate();
+        Jump();
+        Dead();
         // Get horizontal speed (ignores jumping)
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         currentSpeed = flatVel.magnitude;
@@ -121,6 +125,10 @@ public class PlayerBasicMovement : MonoBehaviour
             // Newton's 3rd Law (push ground → go up)
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+    }
+    public void Dead()
+    {
+        isDead = hPBar.isDead;
     }
 
     void OnCollisionStay(Collision collision)

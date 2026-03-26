@@ -44,15 +44,18 @@ public class PlayerBasicMovement : MonoBehaviour
 
     void Update()
     {
-        
+
+        Rotate();
+        Jump();
     }
 
     void FixedUpdate()
     {
-        if (isDead) return; // Don't move if dead
+        if (isDead)// Don't move if dead
+        {
+            this.enabled = false;
+        }
         Move();
-        Rotate();
-        Jump();
         Dead();
         // Get horizontal speed (ignores jumping)
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);

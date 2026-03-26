@@ -31,7 +31,7 @@ public class PlayerBasicMovement : MonoBehaviour
     public float currentStamina;
 
     Rigidbody rb;
-    bool isGrounded;
+    public bool isGrounded;
     bool sprintLocked;
 
     void Start()
@@ -84,7 +84,7 @@ public class PlayerBasicMovement : MonoBehaviour
             rb.AddForce(transform.forward * v * force);
         }
 
-        // ✨ Air float effect
+        // Air float effect
         if (!isGrounded && isSprinting)
         {
             rb.AddForce(Vector3.up * airFloatForce);

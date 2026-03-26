@@ -1,15 +1,29 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class HPBarControl : MonoBehaviour
 {
     public Slider hpBar;
+
     public float maxHP = 5f;
     public float currentHP;
+
+    [Header("Invincibility")]
+    public float invincibleTime = 1.0f;
+    bool isInvincible = false;
+
+    PlayerBasicMovement player;
 
     void Start()
     {
         currentHP = maxHP;
+        player = GetComponent<PlayerBasicMovement>();
+    }
+    public void AddHP(float amount)
+    {
+        currentHP += amount;
+        currentHP = Mathf.Clamp(currentHP, 0f, maxHP);
     }
 
     void Update()
@@ -17,10 +31,27 @@ public class HPBarControl : MonoBehaviour
         hpBar.value = currentHP / maxHP;
     }
 
-    public void AddHP(float amount)
+    public void TakeDamage(float amount)
     {
-        currentHP = Mathf.Clamp(currentHP + amount, 0f, maxHP);
+        // 🛑 Ignore damage if invincible OR sprinting
+        if (isInvincible || IsSprinting())
+            return;
+
+        currentHP -= amount;
+        currentHP = Mathf.Clamp(currentHP, 0f, maxHP);
+
+        StartCoroutine(InvincibilityCoroutine());
+    }
+
+    bool IsSprinting()
+    {
+        return Input.GetKey(KeyCode.LeftShift) && player.currentStamina > 0f;
+    }
+
+    IEnumerator InvincibilityCoroutine()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(invincibleTime);
+        isInvincible = false;
     }
 }
-
-    

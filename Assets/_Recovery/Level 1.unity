@@ -32938,9 +32938,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1951716579306850148, guid: 7554ff4f3ec8ae74fa45499e1cac4e11, type: 3}
+      propertyPath: Damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4460294972292394925, guid: 7554ff4f3ec8ae74fa45499e1cac4e11, type: 3}
       propertyPath: m_Name
       value: Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460294972292394925, guid: 7554ff4f3ec8ae74fa45499e1cac4e11, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8349913268241269640, guid: 7554ff4f3ec8ae74fa45499e1cac4e11, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33044,7 +33052,6 @@ SceneRoots:
   - {fileID: 722884060}
   - {fileID: 1412897700}
   - {fileID: 1674219120}
-  - {fileID: 2097293878}
   - {fileID: 839494388}
   - {fileID: 1045504894}
   - {fileID: 1274717595}
@@ -33074,3 +33081,4 @@ SceneRoots:
   - {fileID: 688308200}
   - {fileID: 1754936331}
   - {fileID: 8962491025088684122}
+  - {fileID: 2097293878}

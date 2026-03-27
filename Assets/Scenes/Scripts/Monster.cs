@@ -10,7 +10,7 @@ public class Monster : MonoBehaviour
             HPBarControl hp = collision.gameObject.GetComponent<HPBarControl>();
             if (hp != null)
             {
-                hp.TakeDamage(Damage); // Reduce player's HP by 1
+                hp.TakeDamage(1f); // Reduce player's HP by 1
             }
         }
     }

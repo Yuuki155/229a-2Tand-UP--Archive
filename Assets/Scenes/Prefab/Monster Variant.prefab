@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1143820479828549368, guid: 7d08fa38e7113344a8118f9acf364fd2, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2966869316649023025, guid: 7d08fa38e7113344a8118f9acf364fd2, type: 3}
+      propertyPath: Damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4744918169290420957, guid: 7d08fa38e7113344a8118f9acf364fd2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 414.66916

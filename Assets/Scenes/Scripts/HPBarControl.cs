@@ -31,7 +31,7 @@ public class HPBarControl : MonoBehaviour
     void Update()
     {
         hpBar.value = currentHP / maxHP;
-        if(currentHP <= 0f)
+        if (currentHP <= 0f)
         {
             Debug.Log("Player has died!");
             isDead = true;

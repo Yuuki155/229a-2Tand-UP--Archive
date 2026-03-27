@@ -15622,6 +15622,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2440959190685000499, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -246
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537721945928547859, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 186
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731674246537556997, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_text
+      value: "thank you for playing \nAssets 'Free Trees' , 'Fantasy Sky box FREE'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731674246537556997, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_margin.x
+      value: -317.2044
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731674246537556997, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_margin.z
+      value: -310.1103
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731674246537556997, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731674246537556997, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731674246537556997, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3731674246537556997, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     - target: {fileID: 4068984367935168145, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
       propertyPath: player
       value: 
@@ -15629,6 +15665,38 @@ PrefabInstance:
     - target: {fileID: 4126591194659344722, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
       propertyPath: m_Sprite
       value: 
+      objectReference: {fileID: 21300000, guid: 16f7d12faf616a743bd43e011892cd0a, type: 3}
+    - target: {fileID: 5227817754560499076, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227817754560499076, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227817754560499076, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227817754560499076, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227817754560499076, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227817754560499076, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227817754560499076, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227817754560499076, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -342
       objectReference: {fileID: 0}
     - target: {fileID: 5558551660927195958, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
       propertyPath: m_AnchorMax.x
@@ -15645,6 +15713,30 @@ PrefabInstance:
     - target: {fileID: 5842936613079550376, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137425648081473676, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_text
+      value: '1670704517 Khanapos Saetang sect229A No.22
+
+        Enemy Script, UI
+        script & designer, Enemy, Level decoration
+
+
+        1670704558 Chinnawat
+        xinyien Kok sect229A No.23
+
+        Game designer, Player movement, level
+        design, Collectibles
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137425648081473676, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_margin.x
+      value: -399.5166
+      objectReference: {fileID: 0}
+    - target: {fileID: 6137425648081473676, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
+      propertyPath: m_margin.z
+      value: -379.01117
       objectReference: {fileID: 0}
     - target: {fileID: 6369533675742822052, guid: 8649d7f00ea0558489a81870dd56e441, type: 3}
       propertyPath: m_IsActive
